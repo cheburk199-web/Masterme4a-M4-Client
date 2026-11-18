@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[37,)"
+license="MIT"
+
+[[mods]]
+modId="masterme4aitemscroller"
+version="${file.jarVersion}"
+displayName="Masterme4a Item Scroller"
+authors="Masterme4a"
+description='''
+Client-side one-click quick-move helper for Minecraft Forge 1.17.1.
+'''
+
+[[dependencies.masterme4aitemscroller]]
+    modId="forge"
+    mandatory=true
+    versionRange="[37.1.1,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.masterme4aitemscroller]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="CLIENT"
