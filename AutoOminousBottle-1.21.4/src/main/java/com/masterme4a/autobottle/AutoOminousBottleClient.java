@@ -71,8 +71,8 @@ public class AutoOminousBottleClient implements ClientModInitializer {
 
         if (client.player.isUsingItem()) return;
 
-        if (client.player.getInventory().getSelectedSlot() != bottleSlot) {
-            previousSlot = client.player.getInventory().getSelectedSlot();
+        if (client.player.getInventory().selectedSlot != bottleSlot) {
+            previousSlot = client.player.getInventory().selectedSlot;
             client.player.getInventory().setSelectedSlot(bottleSlot);
             useCooldown = 2;
             return;
