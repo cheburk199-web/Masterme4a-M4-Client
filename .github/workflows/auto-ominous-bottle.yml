@@ -1,0 +1,42 @@
+name: Build Auto Ominous Bottle (Fabric 1.21.4)
+
+on:
+  push:
+    paths:
+      - 'AutoOminousBottle-1.21.4/**'
+      - '.github/workflows/auto-ominous-bottle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+      - name: Build mod
+        working-directory: AutoOminousBottle-1.21.4
+        run: gradle build
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: auto-ominous-bottle-build-${{ github.run_number }}
+        run: |
+          gh release create "$TAG" AutoOminousBottle-1.21.4/build/libs/*.jar \
+            --repo "${{ github.repository }}" \
+            --title "Auto Ominous Bottle Fabric 1.21.4 (build ${{ github.run_number }})" \
+            --notes "Client-side Fabric mod for Minecraft 1.21.4."
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Masterme4a-Auto-Ominous-Bottle-Fabric-1.21.4
+          path: AutoOminousBottle-1.21.4/build/libs/*.jar
+          if-no-files-found: error
