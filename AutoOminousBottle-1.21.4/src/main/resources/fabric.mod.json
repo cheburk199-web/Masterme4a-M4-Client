@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "masterme4a_auto_ominous_bottle",
+  "version": "${version}",
+  "name": "Masterme4a Auto Ominous Bottle",
+  "description": "Automatically drinks an Ominous Bottle from the hotbar when Bad Omen is not active. Toggle with /autobottle.",
+  "authors": ["Masterme4a"],
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.masterme4a.autobottle.AutoOminousBottleClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
